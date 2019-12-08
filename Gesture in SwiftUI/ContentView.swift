@@ -9,8 +9,38 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    
+    @State private var dragOffSet  = CGSize.zero
+    
     var body: some View {
-        Text("Hello World")
+        
+        ZStack{
+            LinearGradient(gradient: Gradient(colors: [.yellow , .red]), startPoint: .topLeading, endPoint: .bottomTrailing)
+            
+                   
+        }.frame(width: 200, height: 200)
+            .offset(self.dragOffSet)
+            .animation(.spring())
+        
+        .gesture(
+        
+            DragGesture()
+            
+                .onChanged({ (value) in
+                    self.dragOffSet = value.translation
+                })
+                .onEnded({ (value) in
+                    self.dragOffSet = CGSize.zero
+                })
+        
+        )
+            
+        
+
+        
+ 
+        
     }
 }
 
