@@ -15,7 +15,9 @@ struct ContentView: View {
     
     var body: some View {
         
+    
         ZStack{
+            
             LinearGradient(gradient: Gradient(colors: [.yellow , .red]), startPoint: .topLeading, endPoint: .bottomTrailing)
             
                    
@@ -36,8 +38,6 @@ struct ContentView: View {
         
         )
             
-        
-
         
  
         
