@@ -12,6 +12,9 @@ import SwiftUI
 struct TapGestureView : View{
    
     @State private var tapped = false
+    @State private var dragOffset  = CGSize.zero
+  
+     let arrayOfLetters = Array("I love SwiftUI")
     
     
     
@@ -34,6 +37,44 @@ struct TapGestureView : View{
             
             
             )
+            
+     //Added a tap Gesture
+            
+            HStack{
+                
+                ForEach(0..<arrayOfLetters.count){ value in
+                    
+                    Text(String(self.arrayOfLetters[value])).font(.largeTitle)
+                       
+                           .offset(self.dragOffset)
+                        .animation(Animation.default.delay((Double(value))/20))
+                         
+                    
+                    
+                }
+            .gesture(
+                DragGesture()
+                    .onChanged({ (value) in
+                        self.dragOffset = value.translation
+                        
+                    })
+                    .onEnded({ (value) in
+                        self.dragOffset = CGSize.zero
+                    })
+                
+                
+                
+                
+                )
+            
+                
+                
+            }
+            
+            
+            
+            
+            
             
         }
         
